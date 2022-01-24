@@ -134,5 +134,11 @@ promptUser()
   .then(portfolioData => {
     const pageHTML = generatePage(portfolioData);
 
-    fs.writeFile('./dist/index.html');
-});
+    fs.writeFile('./dist/index.html', pageHTML, err => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      console.log('Page created! Check out index.html in this directory to see it!');
+    });
+  })
